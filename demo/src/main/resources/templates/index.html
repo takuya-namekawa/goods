@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>GoodsInfo</title>
+</head>
+<body>
+    <h1>商品情報</h1>
+    
+
+    <p>商品ID: <span th:text="${goodsForm.goodsId}"></span></p>
+
+	
+	<form th:action="@{/goods/{goodsId}(goodsId=${goodsForm.goodsId})}" th:object="${goodsForm}" method="post">
+
+		受渡済み
+		<input type="checkbox" th:field="*{counterHandoverFrag}" value="0"/>
+		<button type="submit">登録</button>
+	</form>
+    <p>受け渡し状況: 
+        <th:block th:if="${goodsForm.counterHandoverFrag} eq '0'">未受渡</th:block>
+        <th:block th:if="${goodsForm.counterHandoverFrag} eq '1'">受渡済み</th:block>
+    </p>
+    
+
+    <p>受け渡し日: 
+        <span th:text="${goodsForm.counterHandoverDate != null ? #dates.format(goodsForm.counterHandoverDate, 'yyyy/MM/dd') : '未設定'}"></span>
+    </p>
+</body>
+</html>
