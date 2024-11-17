@@ -1,6 +1,6 @@
 package com.example.demo.form;
 
-import java.sql.Timestamp;
+import java.time.LocalDate;
 
 import lombok.Data;
 
@@ -9,5 +9,5 @@ public class GoodsForm {
 	private Integer goodsId;
 	private Character fanType;
 	private Character counterHandoverFrag;
-	private Timestamp counterHandoverDate;
+	private LocalDate counterHandoverDate;
 }
